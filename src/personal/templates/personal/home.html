@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="border: 2px solid #000;">
+    <h1>This is the body</h1>
+    <p>This is the big chonk boi of the website page</p>
+    {% include 'personal/snippets/body_snippet.html' %}
+
+    {% for list_item in list %}
+        {% include 'personal/snippets/body_snippet.html' with value=list_item%}
+    {% endfor %}
+</div>
+{% endblock content %}
