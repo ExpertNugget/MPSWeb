@@ -1,16 +1,11 @@
 from django.shortcuts import render
-
+from personal.models import Question
 # Create your views here.
 
 def home_screen_view(request):
-
     context = {}
-
-    list = []
-    list.append("forst")
-    list.append("second")
-    list.append('third')
-
-    context['list'] = list
+    
+    questions = Question.objects.all()
+    context['questions'] = questions
 
     return render(request, "personal/home.html", context)

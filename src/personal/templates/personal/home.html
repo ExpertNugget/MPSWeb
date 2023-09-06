@@ -5,9 +5,8 @@
     <h1>This is the body</h1>
     <p>This is the big chonk boi of the website page</p>
     {% include 'personal/snippets/body_snippet.html' %}
-
-    {% for list_item in list %}
-        {% include 'personal/snippets/body_snippet.html' with value=list_item%}
+    {% for question in questions %}
+        {% include 'personal/snippets/body_snippet.html' with value=question %}
     {% endfor %}
 </div>
 {% endblock content %}
