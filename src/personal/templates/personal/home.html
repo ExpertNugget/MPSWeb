@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div style="border: 2px solid #000;">
-    <h1>This is the body</h1>
-    <p>This is the big chonk boi of the website page</p>
-    {% include 'personal/snippets/body_snippet.html' %}
-    {% for question in questions %}
-        {% include 'personal/snippets/body_snippet.html' with value=question %}
-    {% endfor %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
+    <p class="fs-5 text-body-secondary">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
 </div>
+<h3>Registered Users:</h3>
+{% for account in accounts %}
+    <p>{{account.username}}</p>
+{% endfor %}
+
 {% endblock content %}

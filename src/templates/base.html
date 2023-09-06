@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<title>MPSWeb</title>
-<div style="border: 2px solid #000;">
-    <h1>MPSWeb</h1>
-</div>
+<head>
+    <title>MPSWeb</title>
+    <header>
+        {% include 'snippets/header.html' %}
+    </header>
 </head>
 
 <body>
@@ -12,9 +13,6 @@
     {% endblock content %}
 </body>
 <footer>
-    <div style="border: 2px solid #000;">
-        <h4>This is the footer</h4>
-    </div>
+    {% include 'snippets/footer.html' %}
 </footer>
-
 </html>

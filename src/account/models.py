@@ -39,7 +39,7 @@ class Account(AbstractBaseUser):
     email                       = models.EmailField(max_length=60, verbose_name="email", unique=True)
     password                    = models.CharField(max_length=128)
     username                    = models.CharField(max_length=30, unique=True)
-    date_joined                 = models.DateTimeField(verbose_name='date joined', auto_now=True)
+    date_joined                 = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login                  = models.DateTimeField(verbose_name='last login', auto_now=True)
     is_active                   = models.BooleanField(default=True)
     is_superuser                = models.BooleanField(default=False)
