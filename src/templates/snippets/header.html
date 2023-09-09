@@ -1,11 +1,162 @@
-<nav>
-    {% if user.is_authenticated %}
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'account' %}">Account</a>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-</nav>
+<style>
+    .sidebar {
+        background-color: #333;
+        position: fixed;
+        transition: width 0.2s ease;
+    }
+
+    .sidebar nav {
+        height: 100%;
+    }
+
+    .sidebar .sidebar__nav {
+        display: flex;
+        height: 100%;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sidebar .sidebar__nav .sidebar__nav__link {
+        align-items: center;
+        color: #bbb;
+        display: flex;
+        padding-left: 20px;
+        text-decoration: none;
+        transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .sidebar .sidebar__nav .sidebar__nav__link:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+        color: rgb(19, 180, 4);
+    }
+
+    .sidebar .sidebar__nav .sidebar__nav__text {
+        display: none;
+        margin-left: 10px;
+        margin-right: auto;
+        white-space: nowrap;
+    }
+
+    .sidebar .sidebar__nav i {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    @media (max-width: 572px) {
+        .sidebar {
+            bottom: 0;
+            width: 100%;
+        }
+
+        .sidebar .sidebar__nav {
+            justify-content: center;
+        }
+
+        .sidebar .sidebar__nav .sidebar__nav__link {
+            height: 100%;
+            padding: 0.75em;
+        }
+
+        .sidebar .sidebar__nav i {
+            font-size: 2rem;
+        }
+    }
+
+    @media (min-width:572px) {
+        .sidebar {
+            height: 100vh;
+            left: 0;
+            width: var(--sidebar-width);
+        }
+
+        .sidebar:hover {
+            width: 14rem;
+        }
+
+        .sidebar .sidebar__nav {
+            flex-direction: column;
+        }
+
+        .sidebar .sidebar__nav li:last-child {
+            margin-top: auto;
+        }
+
+        .sidebar .sidebar__nav .sidebar__nav__link {
+            padding: 1em;
+        }
+
+        .sidebar:hover .sidebar__nav .sidebar__nav__text {
+            display: inline;
+        }
+
+        .sidebar .sidebar__nav i {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-height: 50%) {
+        .sidebar {
+            overflow-y: scroll;
+        }
+    }
+</style>
+<aside class="sidebar">
+    <nav>
+        <ul class="sidebar__nav">
+            <li>
+                <a href="#" class="sidebar__nav__link">
+                    <i class="mdi mdi-discord"></i>
+                    <span class="sidebar__nav__text">Discord</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="sidebar__nav__link">
+                    <i class="mdi mdi-server"></i>
+                    <span class="sidebar__nav__text">Servers</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="sidebar__nav__link">
+                    <i class="mdi mdi-account-group"></i>
+                    <span class="sidebar__nav__text">MPS team</span>
+                </a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'account' %}" class="sidebar__nav__link">
+                    <i class="mdi mdi-account"></i>
+                    <span class="sidebar__nav__text">Account</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}" class="sidebar__nav__link">
+                    <i class="mdi mdi-logout-variant"></i>
+                    <span class="sidebar__nav__text">Logout</span>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'login' %}" class="sidebar__nav__link">
+                    <i class="mdi mdi-login-variant"></i>
+                    <span class="sidebar__nav__text">Login</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'register' %}" class="sidebar__nav__link">
+                    <i class="mdi mdi-account-plus"></i>
+                    <span class="sidebar__nav__text">Register</span>
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <a href="{% url 'home' %}" class="sidebar__nav__link">
+                    <i class="mdi mdi-home"></i>
+                    <span class="sidebar__nav__text">Home</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
