@@ -1,9 +1,90 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Registered Users:</h3>
-{% for account in accounts %}
-    <p>{{account.username}}</p>
-{% endfor %}
+<!--
+    modified off of
+    https://github.com/mitchtabian/CodingWithMitch-Blog-Course/blob/5a6fc877ba9240313500a1bc9bd98a0cab13593a/src/personal/templates/personal/home.html
+-->
+<style type="text/css">
+
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.post-container{
+		background-color: #fff;
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+
+</style>
+<div class="container">
+	<div class="row">
+
+		<!-- Top 'create post' bar -->
+		<div class="create-post-bar d-lg-none col-lg-7 offset-lg-1">
+			<p><a href="{% url 'minecraft:create' %}">Create post</a></p>
+		</div>
+		<!-- end Top 'create post' bar -->
+
+
+		<!-- feed -->
+		<div class="left-column col-lg-7 offset-lg-1">
+			
+			<div class="post-container">
+				<p>Thingy</p>
+			</div>
+			
+			<div class="post-container">
+				<p>Thingy</p>
+			</div>
+
+			<div class="post-container">
+				<p>Thingy</p>
+			</div>
+
+			<div class="post-container">
+				<p>Thingy</p>
+			</div>
+
+		</div>
+		<!-- end feed -->
+
+
+		<!-- Right 'create post' column  -->
+		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+
+			<div class="create-post-bar">
+				<p>Stuff</p>
+				<p>Stuff</p>
+				<p>Stuff</p>
+				<p><a href="{% url 'minecraft:create' %}">Create post</a></p>
+			</div>
+		
+		</div>
+		<!-- end Right 'create post' column  -->
+
+	</div>
+</div>
 
 {% endblock content %}
