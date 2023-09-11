@@ -22,4 +22,4 @@ def create_minecraft_view(request):
 
     context['form'] = form
 
-    return render(request, "minecraft/create-mc.html", {})
+    return render(request, "minecraft/create-mc.html", context)
