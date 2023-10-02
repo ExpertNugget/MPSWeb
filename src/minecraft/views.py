@@ -6,20 +6,20 @@ from account.models import Account
 
 def create_minecraft_view(request):
 
-    context = {}
+	context = {}
 
-    user = request.user
-    if not user.is_authenticated:
-        return redirect('must_authenticate')
-    
-    form = CreateMinecraftPostForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        obj = form.save(commit=False)
-        author = Account.objects.filter(email=user.email).first()
-        obj.author = author
-        obj.save()
-        form = CreateMinecraftPostForm()
+	user = request.user
+	if not user.is_authenticated:
+		return redirect('must_authenticate')
 
-    context['form'] = form
+	form = CreateMinecraftPostForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		obj = form.save(commit=False)
+		author = Account.objects.filter(email=user.email).first()
+		obj.author = author
+		obj.save()
+		form = CreateMinecraftPostForm()
 
-    return render(request, "minecraft/create-mc.html", context)
+	context['form'] = form
+
+	return render(request, "minecraft/create_mc.html", context)

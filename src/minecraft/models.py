@@ -1,11 +1,10 @@
 from django.db import models
-
 from django.db.models.signals import pre_save, post_delete
 from django.utils.text import slugify
 from django.conf import settings
 from django.dispatch import receiver
 
-def upload_location(instance, filename, **kwargs):
+def upload_location(instance, filename):
     file_path = 'minecraft/{author_id}/{title}-{filename}'.format(
         author_id=str(instance.author.id),
         title=str(instance.title),
