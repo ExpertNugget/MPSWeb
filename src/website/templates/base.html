@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap" />
+    <link rel="icon" type="image/x-icon"
+        href="https://cdn.discordapp.com/attachments/859710530884337684/932704628871676015/MPS13.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>{% block title %}MPSWeb{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button 
+            class="navbar-toggler" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbar"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" id="login" href="/login">Login</a>
+                <a class="nav-item nav-link" id="signup" href="/signup">Signup</a>
+                <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+                <a class="nav-item nav-link" id="ome" href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div class="alert alert-danger alert-dismisable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% elif category == 'success' %}
+                    <div class="alert alert-success alert-dismisable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
